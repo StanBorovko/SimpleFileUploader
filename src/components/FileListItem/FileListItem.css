@@ -1,0 +1,14 @@
+.row .col, .row .col-2, .row .col-4, .row .col-6 {
+  border: 1px solid transparent;
+  border-right: 1px solid black;
+}
+.row .col:last-child, .row .col-2:last-child, .row .col-4:last-child, .row .col-6:last-child {
+  border-right: 1px solid transparent;
+}
+.row .status-flag {
+  width: 20px;
+  height: 20px;
+  line-height: 1.5;
+}
+
+/*# sourceMappingURL=FileListItem.css.map */

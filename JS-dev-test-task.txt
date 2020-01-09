@@ -1,0 +1,52 @@
+﻿1. Create empty public git repository.
+2. Initialize it with master branch
+3. Create dev branch
+4. Create Vue/ReactJS app
+5. Develop features from ‘App features’ list
+6. Push app to dev
+
+
+
+
+App features:
+
+
+
+
+1. There is a single button ‘Upload files’
+2. After User clicks this button, he can select multiple files
+3. After selection we can see files list in the following format:
+1. Filename | filesize | X (where X is cancellation of this particular file upload)
+2. Filename | filesize ….
+* [UPLOAD] button
+
+
+4. After  [UPLOAD] button clicked files from selection are copied to public/uploads folder of the application. 
+5. We can see the list of files in public/uploads
+6. Commit and push to develop.
+
+Estimate: 4 - 6 hours. 
+
+
+
+
+
+
+После выполнения тестового задания возможно:
+
+
+1. Скачать repo из git
+2. Выполнить npm install и следом
+2.1. npm start (creatreactapp)
+или 
+2.2 npm run serve (vuejs)
+3. Выполнить выбор файлов для загрузки. 
+4. Отменить загрузку файлов добавленных в множество случайно 
+5. Выполнить загрузку на (в случае localhost это должно быть копирование в папку PROJECT_ROOT/public/uploads
+6. Просмотреть список файлов загруженных таким образом
+
+
+Пример:
+
+
+https://gofile.io/?t=uploadFiles
