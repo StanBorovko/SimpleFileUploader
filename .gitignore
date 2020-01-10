@@ -16,6 +16,9 @@
 #Task description
 JS-dev-test-task.txt
 
+#Uploaded files
+/public/uploads/*
+
 
 # misc
 .DS_Store
