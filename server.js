@@ -4,6 +4,11 @@ const url = require('url');
 
 const UPLOAD = `./public/uploads`;
 
+fs.mkdir(UPLOAD, { recursive: true }, (err) => {
+    if (err) console.log('It happens on making dir!');
+});
+
+
 http.createServer(handler).listen(3333);
 console.log('File server running at port 3333');
 
