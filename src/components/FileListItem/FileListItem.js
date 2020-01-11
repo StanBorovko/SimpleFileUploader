@@ -13,7 +13,6 @@ const FileListItem = ({item, onCancel}) => {
             <Col xs={2}>
                 <Badge pill variant="danger"
                        onClick={() => {onCancel(id)}}
-                       className="status-flag"
                 >
                     x
                 </Badge>

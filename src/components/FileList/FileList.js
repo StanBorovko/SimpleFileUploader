@@ -6,7 +6,6 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-
 const FileList = ({files, ...rest}) => {
     if (files.length > 0) {
         return (
@@ -30,7 +29,6 @@ const FileList = ({files, ...rest}) => {
     } else {
         return null;
     }
-
 };
 
 export default FileList;

@@ -38,6 +38,7 @@ export default class App extends Component {
         const newFilesInfo = filesInfo.filter((item) => {
             return item.id !== id
         });
+
         if (newFilesInfo.length === 0) {
             this.setState({...defaultState});
         } else {
@@ -50,20 +51,14 @@ export default class App extends Component {
     postFiles = () => {
         this.state.filesInfo.forEach((fileInfo) => {
             const file = this.state.files.item(fileInfo.id);
-            // const fd = new FormData();
-            // fd.append('data', file);
             fetch(`http://localhost:3333/upload?name=${fileInfo.fileName}`, {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'no-cors', // no-cors, cors, *same-origin
-                // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
+                method: 'POST',
+                mode: 'no-cors',
+                credentials: 'same-origin',
                 headers: {
                     'Content-Type': file.type,
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                // redirect: 'follow', // manual, *follow, error
-                // referrer: 'no-referrer', // no-referrer, *client
-                body: file, // тип данных в body должен соответвовать значению заголовка "Content-Type"
+                body: file,
             })
                 .catch(err => {
                     console.error(err);
@@ -76,49 +71,28 @@ export default class App extends Component {
     };
 
     updateUploaded = () => {
-        this.getUploaded().then(newUploaded => {
-            if (newUploaded.files.length > 0) {this.setState({uploaded: newUploaded.files});}
-            else {this.setState({uploaded: null});}
-        })
-            .catch(err => {console.error(err)});
+        this.getUploaded()
+            .then(newUploaded => {
+                if (newUploaded.files.length > 0) {
+                    this.setState({uploaded: newUploaded.files});
+                } else {
+                    this.setState({uploaded: null});
+                }
+            })
+            .catch(err => {
+                console.error(err)
+            });
     };
 
     getUploaded = async () => {
-        //FIXME: clean up this func
         const response = await fetch('http://localhost:3333/getUploaded', {
-            method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            // mode: 'cors', // no-cors, cors, *same-origin
-            // credentials: 'same-origin', // include, *same-origin, omit
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
         });
-        const newUploaded = await response.json();
-        return newUploaded;
 
-        /*fetch(`http://localhost:3333/getUploaded`, {
-            method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            mode: 'no-cors', // no-cors, cors, *same-origin
-            // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            // redirect: 'follow', // manual, *follow, error
-            // referrer: 'no-referrer', // no-referrer, *client
-            // body: file, // тип данных в body должен соответвовать значению заголовка "Content-Type"
-        })
-            .then(response => {
-                console.log(response);
-                return response.json();
-            })
-            .then(newUploaded => {
-                this.setState({uploaded: newUploaded.files});
-            })
-            .catch(err => {
-                console.error(err);
-            });*/
-
+        return await response.json();
     };
 
     updateFileInfo = () => {
@@ -147,7 +121,6 @@ export default class App extends Component {
     };
 
     render() {
-        // console.log(this.state.files, this.state.filesInfo);
         return (
             <Form className="d-flex flex-column align-items-center m-2 p-2 border border-primary rounded"
                   onSubmit={this.onFormSubmit}
@@ -170,7 +143,8 @@ export default class App extends Component {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-                {(this.state.uploaded)? <UploadedList uploaded={this.state.uploaded} /> : <p className="text-center">Loading...</p>}
+                {(this.state.uploaded) ? <UploadedList uploaded={this.state.uploaded}/> :
+                    <p className="text-center">Loading...</p>}
             </Form>
         )
     }

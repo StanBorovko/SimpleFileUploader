@@ -5,10 +5,13 @@
 .row .col:last-child, .row .col-2:last-child, .row .col-4:last-child, .row .col-6:last-child {
   border-right: 1px solid transparent;
 }
-.row .status-flag {
+.row .badge {
   width: 20px;
   height: 20px;
-  line-height: 1.5;
+}
+.row .badge:hover {
+  cursor: pointer;
+  background-color: #e77681;
 }
 
 /*# sourceMappingURL=FileListItem.css.map */

@@ -8,9 +8,13 @@
     }
   }
 
-  .status-flag {
+  .badge {
     width: 20px;
     height: 20px;
-    line-height: 1.5;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lighten(#dc3545, 15%)
+    }
   }
 }
